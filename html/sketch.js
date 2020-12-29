@@ -16,12 +16,12 @@ function preload() {
   assets = loadJSON('assets/assets.json', () => {
     rawBtnClickedText = assets.RawImgs[0].split(".")[0]
     // 加载底料图片
-    for (rawImg of assets.RawImgs) {
+    for (var rawImg of assets.RawImgs) {
       var rawImgName = rawImg.split(".")[0]
       rawImgs.push(loadImage('assets/raw/' + rawImg))
       var enaImgNames = assets[rawImgName]
       let enaImgs = new Array()
-      for (item in enaImgNames) {
+      for (var item in enaImgNames) {
         enaImgs.push(loadImage('assets/' + rawImgName + '/' + enaImgNames[item]))
         //调试时查看加载的文件名
         // enaImgs.push('assets/' + rawImgName + '/' + enaImgNames[item])
@@ -29,8 +29,8 @@ function preload() {
       enaImgsTypes[rawImgName] = enaImgs
     }
     //加载模型
-    for (model of assets.Models) {
-      models.push({ "name": model.name, "img": loadImage('assets/model/' + model.img), "obj": model.obj })
+    for (var modelItem of assets.Models) {
+      models.push({ "name": modelItem.name, "img": loadImage('assets/model/' + modelItem.img), "obj": modelItem.obj })
     }
 
   });
@@ -265,7 +265,7 @@ function draw() {
   text("成品素材", 1220 - width / 2, -height / 2 + 25);
   textSize(12);
   // fill(0);
-  for (rawBtnIndex in rawBtns) {
+  for (var rawBtnIndex in rawBtns) {
     rawBtns[rawBtnIndex].draw()
     rect(rawBtns[rawBtnIndex].x, rawBtns[rawBtnIndex].y - 25, 50, 20)
     fill(255)
